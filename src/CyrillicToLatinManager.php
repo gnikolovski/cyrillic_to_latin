@@ -2,7 +2,6 @@
 
 namespace Drupal\cyrillic_to_latin;
 
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\TranslationManager;
 
 /**
@@ -58,7 +57,7 @@ class CyrillicToLatinManager extends TranslationManager {
       'dž', 'š', 'Nj', 'Lj', 'A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I',
       'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C',
       'Č', 'Dž', 'Š');
-    
+
     return str_replace($cyrillic, $latin, $string);
   }
 
