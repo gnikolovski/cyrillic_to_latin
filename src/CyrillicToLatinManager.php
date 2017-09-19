@@ -36,7 +36,7 @@ class CyrillicToLatinManager extends TranslationManager {
         'context' => '',
       ];
     $translation = $this->getStringTranslation($options['langcode'], $string, $options['context']);
-    return $translation === FALSE ? $string : $this->convertCyrillicToLatin($translation);
+    return $translation === FALSE ? $string : self::convertCyrillicToLatin($translation);
   }
 
   /**
@@ -45,7 +45,7 @@ class CyrillicToLatinManager extends TranslationManager {
    *
    * @return $string
    */
-  protected function convertCyrillicToLatin($string) {
+  public static function convertCyrillicToLatin($string) {
     $cyrillic  = array(
       'њ', 'љ', 'а', 'б', 'в', 'г', 'д', 'ђ', 'e', 'ж', 'з', 'и', 'ј', 'к', 'л',
       'м', 'н', 'о', 'п', 'р', 'с', 'т', 'ћ', 'у', 'ф', 'х', 'ц', 'ч', 'џ', 'ш',
