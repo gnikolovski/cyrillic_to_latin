@@ -1,0 +1,13 @@
+<?php
+
+use Drupal\cyrillic_to_latin\CyrillicToLatinManager;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cyrillic_to_latin_preprocess_field(&$variables) {
+  if ($variables['element']['#field_type'] == 'address' && isset($variables['items'][0]['content']['#country']['name'])) {
+		$country_name = $variables['items'][0]['content']['#country']['name'];
+		$variables['items'][0]['content']['#country']['name'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
+  }
+}
