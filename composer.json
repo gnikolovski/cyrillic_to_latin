@@ -1,0 +1,20 @@
+{
+    "name": "drupal/cyrillic_to_latin",
+    "description": "Converts cyrillic to latin letters on the fly for the Serbian language.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/cyrillic_to_latin",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Goran Nikolovski",
+            "email": "nikolovski84@gmail.com",
+            "homepage": "http://gorannikolovski.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/cyrillic_to_latin"
+    },
+    "minimum-stability": "dev",
+    "require": { }
+}
