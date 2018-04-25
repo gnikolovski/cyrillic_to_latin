@@ -6,33 +6,31 @@ use Drupal\cyrillic_to_latin\CyrillicToLatinManager;
  * Implements hook_preprocess_HOOK().
  */
 function cyrillic_to_latin_preprocess_field(&$variables) {
-  // Preprocess the plain address field formatter.
-  if ($variables['element']['#field_type'] == 'address' && isset($variables['items'][0]['content']['#country']['name'])) {
-    $country_name = $variables['items'][0]['content']['#country']['name'];
-    $variables['items'][0]['content']['#country']['name'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
-  }
-
-  // Preprocess the default address field formatter.
-  if ($variables['element']['#field_type'] == 'address' && isset($variables['items'][0]['content']['country']['#value'])) {
-    $country_name = $variables['items'][0]['content']['country']['#value'];
-    $variables['items'][0]['content']['country']['#value'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
-  }
+  $field_type = $variables['element']['#field_type'];
 
   // Preprocess string fields.
-  if (in_array($variables['element']['#field_type'], ['string', 'string_long']) && isset($variables['items'][0]['content']['#context']['value'])) {
+  if (in_array($field_type, ['string', 'string_long']) && isset($variables['items'][0]['content']['#context']['value'])) {
     $value = $variables['items'][0]['content']['#context']['value'];
     $variables['items'][0]['content']['#context']['value'] = CyrillicToLatinManager::convertCyrillicToLatin($value);
   }
-
   // Preprocess text fields.
-  if (in_array($variables['element']['#field_type'], ['text', 'text_long', 'text_with_summary']) && isset($variables['items'][0]['content']['#text'])) {
+  elseif (in_array($field_type, ['text', 'text_long', 'text_with_summary']) && isset($variables['items'][0]['content']['#text'])) {
     $value = $variables['items'][0]['content']['#text'];
     $variables['items'][0]['content']['#text'] = CyrillicToLatinManager::convertCyrillicToLatin($value);
   }
-
   // Preprocess list text fields.
-  if ($variables['element']['#field_type'] == 'list_string' && isset($variables['items'][0]['content']['#markup'])) {
+  elseif ($field_type == 'list_string' && isset($variables['items'][0]['content']['#markup'])) {
     $value = $variables['items'][0]['content']['#markup'];
     $variables['items'][0]['content']['#markup'] = CyrillicToLatinManager::convertCyrillicToLatin($value);
+  }
+  // Preprocess the plain address field formatter.
+  elseif ($field_type == 'address' && isset($variables['items'][0]['content']['#country']['name'])) {
+    $country_name = $variables['items'][0]['content']['#country']['name'];
+    $variables['items'][0]['content']['#country']['name'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
+  }
+  // Preprocess the default address field formatter.
+  elseif ($field_type == 'address' && isset($variables['items'][0]['content']['country']['#value'])) {
+    $country_name = $variables['items'][0]['content']['country']['#value'];
+    $variables['items'][0]['content']['country']['#value'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
   }
 }
