@@ -10,34 +10,44 @@
 
 ## INTRODUCTION
 
-Converts cyrillic to latin letters on the fly for Serbian language. At this 
-moment, the module will convert only strings that are passed through Drupal t() 
-function. That means that content won't be translated.
-
-There is one special case that this module handles. If you are using the Address 
-module, country name will be converted to latin.
+Cyrillic to Latin module will convert strings that are passed through Drupal t() 
+function and string/text field values. If you are using the Address module, 
+country name will also be converted to latin.
 
 ## REQUIREMENTS
 
-None.
+No special requirements.
 
 ## INSTALLATION
 
-1. Install the module as usual via Drupal UI, Drush or Composer.
-2. Go to "Extend" and enable the Cyrillic to Latin module.
+Install as you would normally install a contributed Drupal module. See: 
+https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-modules 
+for further information.
+
+The recommended way to install the module is via Composer:
+
+```
+composer require drupal/cyrillic_to_latin
+```
+
+and then enable it with Drush:
+
+```
+drush en cyrillic_to_latin -y
+```
 
 ## CONFIGURATION
 
-None.
+No configuration is needed.
 
 ### AUTHOR
 
 Goran Nikolovski  
-Website: (http://www.gorannikolovski.com)  
-Drupal: (https://www.drupal.org/user/3451979)  
+Website: http://www.gorannikolovski.com  
+Drupal.org: https://www.drupal.org/u/gnikolovski  
 Email: nikolovski84@gmail.com  
 
 Company: Studio Present, Subotica, Serbia  
-Website: (http://www.studiopresent.com)  
-Drupal: (https://www.drupal.org/studio-present)  
+Website: http://www.studiopresent.com  
+Drupal: https://www.drupal.org/studio-present  
 Email: info@studiopresent.com  
