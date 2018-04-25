@@ -1,5 +1,5 @@
 name: 'Cyrillic to Latin'
-description: 'Converts strings from cyrillic to latin for Serbian language.'
+description: 'Converts cyrillic to latin letters on the fly for the Serbian language.'
 type: module
 core: 8.x
 package: Multilingual
