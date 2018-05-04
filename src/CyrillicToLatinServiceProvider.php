@@ -4,6 +4,7 @@ namespace Drupal\cyrillic_to_latin;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
+use Drupal\cyrillic_to_latin\ConfigFactory;
 
 /**
  * Class CyrillicToLatinServiceProvider
@@ -13,11 +14,15 @@ use Drupal\Core\DependencyInjection\ServiceProviderBase;
 class CyrillicToLatinServiceProvider extends ServiceProviderBase {
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function alter(ContainerBuilder $container) {
-    $definition = $container->getDefinition('string_translation');
-    $definition->setClass('Drupal\cyrillic_to_latin\CyrillicToLatinManager');
+    $config = \Drupal::configFactory()->get('cyrillic_to_latin.settings');
+
+    if ($config->get('enabled')) {
+      $definition = $container->getDefinition('string_translation');
+      $definition->setClass('Drupal\cyrillic_to_latin\CyrillicToLatinManager');
+    }
   }
 
 }
