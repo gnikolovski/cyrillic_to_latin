@@ -24,7 +24,7 @@ Install as you would normally install a contributed Drupal module. See:
 https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-modules 
 for further information.
 
-The recommended way to install the module is via Composer:
+Use Composer to install the module:
 
 ```
 composer require drupal/cyrillic_to_latin
