@@ -24,7 +24,13 @@ class CyrillicToLatinManager extends TranslationManager {
       'context' => '',
     ];
     $translation = $this->getStringTranslation($options['langcode'], $string, $options['context']);
-    return $translation === FALSE ? $string : self::convertCyrillicToLatin($translation);
+
+    $config = \Drupal::configFactory()->get('cyrillic_to_latin.settings');
+    if ($config->get('enabled')) {
+      return $translation === FALSE ? $string : self::convertCyrillicToLatin($translation);
+    }
+
+    return $translation === FALSE ? $string : $translation;
   }
 
   /**
