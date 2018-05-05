@@ -34,9 +34,9 @@ class SettingsForm extends ConfigFormBase {
 
     $form['enabled'] = [
       '#type' => 'select',
-      '#title' => t('Enabled'),
+      '#title' => $this->t('Enabled'),
       '#default_value' => $cyrillic_to_latin_config->get('enabled'),
-      '#description' => t('Enable or disable the module. You must clear the cache for the change to take effect.'),
+      '#description' => $this->t('Enable or disable the module. You must clear the cache for the change to take effect.'),
       '#options' => [
         '0' => $this->t('No'),
         '1' => $this->t('Yes'),

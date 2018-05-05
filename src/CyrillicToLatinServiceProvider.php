@@ -4,10 +4,9 @@ namespace Drupal\cyrillic_to_latin;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
-use Drupal\cyrillic_to_latin\ConfigFactory;
 
 /**
- * Class CyrillicToLatinServiceProvider
+ * Class CyrillicToLatinServiceProvider.
  *
  * @package Drupal\cyrillic_to_latin
  */

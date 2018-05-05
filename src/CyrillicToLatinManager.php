@@ -20,9 +20,9 @@ class CyrillicToLatinManager extends TranslationManager {
 
     // Merge in options defaults.
     $options = $options + [
-        'langcode' => $this->defaultLangcode,
-        'context' => '',
-      ];
+      'langcode' => $this->defaultLangcode,
+      'context' => '',
+    ];
     $translation = $this->getStringTranslation($options['langcode'], $string, $options['context']);
     return $translation === FALSE ? $string : self::convertCyrillicToLatin($translation);
   }
@@ -31,22 +31,26 @@ class CyrillicToLatinManager extends TranslationManager {
    * Converts cyrillic letters to latin.
    *
    * @param string $string
+   *   A string containing the text to convert.
    *
-   * @return $string
+   * @return string
+   *   The converted string.
    */
   public static function convertCyrillicToLatin($string) {
-    $cyrillic  = [
+    $cyrillic = [
       'њ', 'љ', 'а', 'б', 'в', 'г', 'д', 'ђ', 'e', 'ж', 'з', 'и', 'ј', 'к', 'л',
       'м', 'н', 'о', 'п', 'р', 'с', 'т', 'ћ', 'у', 'ф', 'х', 'ц', 'ч', 'џ', 'ш',
       'Њ', 'Љ', 'А', 'Б', 'В', 'Г', 'Д', 'Ђ', 'Е', 'Ж', 'З', 'И', 'Ј', 'К', 'Л',
-      'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'Ћ', 'У', 'Ф', 'Х','Ц', 'Ч', 'Џ', 'Ш'];
+      'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'Ћ', 'У', 'Ф', 'Х','Ц', 'Ч', 'Џ', 'Ш',
+    ];
 
     $latin = [
       'nj', 'lj', 'a', 'b', 'v', 'g', 'd', 'đ', 'e', 'ž', 'z', 'i', 'j', 'k',
       'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'ć', 'u', 'f', 'h', 'c', 'č',
       'dž', 'š', 'Nj', 'Lj', 'A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I',
       'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C',
-      'Č', 'Dž', 'Š'];
+      'Č', 'Dž', 'Š',
+    ];
 
     return str_replace($cyrillic, $latin, $string);
   }
