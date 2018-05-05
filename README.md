@@ -38,7 +38,11 @@ drush en cyrillic_to_latin -y
 
 ## CONFIGURATION
 
-No configuration is needed.
+You can enable/disable converting here:
+
+```
+'/admin/config/regional/cyrillic-to-latin'
+```
 
 ### AUTHOR
 
