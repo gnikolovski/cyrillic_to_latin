@@ -5,7 +5,7 @@
   * Introduction
   * Requirements
   * Installation
-  * Configuration
+  * Using the module
   * Author
 
 ## INTRODUCTION
@@ -20,10 +20,6 @@ No special requirements.
 
 ## INSTALLATION
 
-Install as you would normally install a contributed Drupal module. See: 
-https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-modules 
-for further information.
-
 Use Composer to install the module:
 
 ```
@@ -36,9 +32,9 @@ and then enable it with Drush:
 drush en cyrillic_to_latin -y
 ```
 
-## CONFIGURATION
+## USING THE MODULE
 
-You can enable/disable converting here:
+You can enable/disable string conversion here:
 
 ```
 '/admin/config/regional/cyrillic-to-latin'
