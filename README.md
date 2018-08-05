@@ -1,11 +1,11 @@
-# Cyrillic to Latin
+# CYRILLIC TO LATIN
 
 ## CONTENTS OF THIS FILE
 
   * Introduction
   * Requirements
   * Installation
-  * Using the module
+  * Configuration
   * Author
 
 ## INTRODUCTION
@@ -32,7 +32,7 @@ and then enable it with Drush:
 drush en cyrillic_to_latin -y
 ```
 
-## USING THE MODULE
+## CONFIGURATION
 
 You can enable/disable string conversion here:
 
