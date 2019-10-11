@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Update scripts for the Cyrillic to Latin module.
+ */
+
+/**
+ * Import default settings for languages.
+ */
+function cyrillic_to_latin_update_8001(&$sandbox) {
+  \Drupal::configFactory()
+    ->getEditable('cyrillic_to_latin.settings')
+    ->set('languages', ['en' => 'en'])
+    ->save();
+}
