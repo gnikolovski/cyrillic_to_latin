@@ -27,7 +27,7 @@ class CyrillicToLatinManager extends TranslationManager {
 
     $config = \Drupal::configFactory()->get('cyrillic_to_latin.settings');
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $enabled_languages = !empty($config->get('languages')) ? $config->get('languages') : [];
+    $enabled_languages = !empty($config->get('languages')) ? array_filter(array_values($config->get('languages'))) : [];
 
     if ($config->get('enabled') && in_array($current_language, $enabled_languages)) {
       return $translation === FALSE ? $string : self::convertCyrillicToLatin($translation);
