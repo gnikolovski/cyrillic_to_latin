@@ -64,7 +64,7 @@ class SettingsForm extends ConfigFormBase {
       '#type' => 'select',
       '#title' => $this->t('Enabled'),
       '#default_value' => $cyrillic_to_latin_config->get('enabled'),
-      '#description' => $this->t('Enable or disable the module. You must clear the cache for the change to take effect.'),
+      '#description' => $this->t('Enable or disable the module.'),
       '#options' => [
         '0' => $this->t('No'),
         '1' => $this->t('Yes'),
@@ -92,7 +92,7 @@ class SettingsForm extends ConfigFormBase {
       ->set('languages', $values['languages'])
       ->save();
 
-    parent::submitForm($form, $form_state);
+    $this->messenger()->addStatus($this->t('The configuration options have been saved. You must clear the cache for the change to take effect.'));
   }
 
   /**
