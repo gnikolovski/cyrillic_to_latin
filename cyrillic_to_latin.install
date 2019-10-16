@@ -11,6 +11,6 @@
 function cyrillic_to_latin_update_8001(&$sandbox) {
   \Drupal::configFactory()
     ->getEditable('cyrillic_to_latin.settings')
-    ->set('languages', ['en' => 'en'])
+    ->set('languages', ['sr' => 'sr'])
     ->save();
 }
