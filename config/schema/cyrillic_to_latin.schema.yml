@@ -5,3 +5,9 @@ cyrillic_to_latin.settings:
     enabled:
       type: boolean
       label: 'Enabled'
+    languages:
+      type: sequence
+      label: 'Languages'
+      sequence:
+        - type: string
+          label: 'Language'
