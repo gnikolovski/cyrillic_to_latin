@@ -3,7 +3,7 @@ cyrillic_to_latin.settings:
   label: 'Cyrillic to Latin settings'
   mapping:
     enabled:
-      type: boolean
+      type: integer
       label: 'Enabled'
     languages:
       type: sequence
