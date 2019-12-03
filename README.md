@@ -1,53 +1,53 @@
-# CYRILLIC TO LATIN
+CONTENTS OF THIS FILE
+---------------------
 
-## CONTENTS OF THIS FILE
+ * Introduction
+ * Requirements
+ * Installation
+ * Configuration
+ * Maintainers
 
-  * Introduction
-  * Requirements
-  * Installation
-  * Configuration
-  * Author
 
-## INTRODUCTION
+INTRODUCTION
+------------
 
-Cyrillic to Latin module will convert strings that are passed through Drupal t() 
-function and string/text field values. If you are using the Address module, 
+Cyrillic to Latin module will convert strings that are passed through Drupal t()
+function and string/text field values. If you are using the Address module,
 country name will also be converted to latin.
 
-## REQUIREMENTS
+ * For a full description of the module, visit the project page:
+   https://www.drupal.org/project/cyrillic_to_latin
 
-No special requirements.
+ * To submit bug reports and feature suggestions, or to track changes:
+   https://www.drupal.org/project/issues/cyrillic_to_latin
 
-## INSTALLATION
 
-Use Composer to install the module:
+REQUIREMENTS
+------------
 
-```
-composer require drupal/cyrillic_to_latin
-```
+This module requires no modules outside of Drupal core.
 
-and then enable it with Drush:
 
-```
-drush en cyrillic_to_latin -y
-```
+INSTALLATION
+------------
 
-## CONFIGURATION
+ * Install the Cyrillic to Latin module as you would normally install a
+   contributed Drupal module. Visit https://www.drupal.org/node/1897420 for
+   further information.
 
-You can enable/disable string conversion here:
 
-```
-'/admin/config/regional/cyrillic-to-latin'
-```
+CONFIGURATION
+-------------
 
-### AUTHOR
+Go to the Cyrillic to Latin settings (admin/config/regional/cyrillic-to-latin)
+and enable/disable string conversion.
 
-Goran Nikolovski  
-Website: http://www.gorannikolovski.com  
-Drupal.org: https://www.drupal.org/u/gnikolovski  
-Email: nikolovski84@gmail.com  
 
-Company: Studio Present, Subotica, Serbia  
-Website: http://www.studiopresent.com  
-Drupal: https://www.drupal.org/studio-present  
-Email: info@studiopresent.com  
+MAINTAINERS
+-----------
+
+Current maintainers:
+ * Goran Nikolovski (gnikolovski) - https://www.drupal.org/u/gnikolovski
+
+This project has been sponsored by:
+ * Studio Present - https://www.drupal.org/studio-present
