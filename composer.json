@@ -6,16 +6,15 @@
     "authors": [
         {
             "name": "Goran Nikolovski",
-            "email": "nikolovski84@gmail.com",
-            "homepage": "http://gorannikolovski.com",
+            "email": "goran@gorannikolovski.com",
+            "homepage": "https://gorannikolovski.com",
             "role": "Developer"
         }
     ],
     "support": {
         "issues": "https://www.drupal.org/project/issues/cyrillic_to_latin",
-        "email": "nikolovski84@gmail.com"
+        "email": "goran@gorannikolovski.com"
     },
     "license": "GPL-2.0+",
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }
