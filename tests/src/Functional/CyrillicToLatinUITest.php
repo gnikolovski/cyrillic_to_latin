@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\cyrillic_to_latin\Functional;
 
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\Tests\BrowserTestBase;
 
@@ -11,6 +12,8 @@ use Drupal\Tests\BrowserTestBase;
  * @group cyrillic_to_latin
  */
 class CyrillicToLatinUITest extends BrowserTestBase {
+
+  use StringTranslationTrait;
 
   /**
    * Modules to enable.
@@ -47,7 +50,7 @@ class CyrillicToLatinUITest extends BrowserTestBase {
     $this->assertSession()->checkboxNotChecked('languages[en]');
     $this->assertSession()->elementExists('css', '#edit-languages-sr');
     $this->assertSession()->checkboxChecked('languages[sr]');
-    $this->assertSession()->buttonExists(t('Save configuration'));
+    $this->assertSession()->buttonExists($this->t('Save configuration'));
   }
 
   /**
@@ -61,8 +64,8 @@ class CyrillicToLatinUITest extends BrowserTestBase {
     ];
 
     $this->drupalPostForm('admin/config/regional/cyrillic-to-latin', $form_values, 'Save configuration');
-    $this->assertSession()->pageTextContains(t('The configuration options have been saved. You must clear the cache for the change to take effect.'));
-    $this->assertSession()->fieldValueEquals('enabled','0');
+    $this->assertSession()->pageTextContains($this->t('The configuration options have been saved. You must clear the cache for the change to take effect.'));
+    $this->assertSession()->fieldValueEquals('enabled', '0');
     $this->assertSession()->checkboxChecked('languages[en]');
     $this->assertSession()->checkboxNotChecked('languages[sr]');
   }
