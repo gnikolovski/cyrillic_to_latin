@@ -45,7 +45,7 @@ class CyrillicToLatinConversionTest extends BrowserTestBase {
   /**
    * Tests form structure.
    */
-  public function testFormStructure() {
+  public function testConversion() {
     $full_html_format = FilterFormat::create([
       'format' => 'full_html',
       'name' => 'Full HTML',
