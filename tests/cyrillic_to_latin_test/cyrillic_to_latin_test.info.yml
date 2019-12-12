@@ -1,0 +1,8 @@
+name: 'Cyrillic to Latin Test'
+type: module
+description: 'Support module for Cyrillic to Latin testing.'
+package: Testing
+core: 8.x
+dependencies:
+  - drupal:node
+  - cyrillic_to_latin:cyrillic_to_latin

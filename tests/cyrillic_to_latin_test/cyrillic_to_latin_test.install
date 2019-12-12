@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for Cyrillic to Latin Test.
+ */
+
+use Drupal\locale\SourceString;
+
+/**
+ * Implements hook_install().
+ */
+function cyrillic_to_latin_test_install() {
+  $storage = \Drupal::service('locale.storage');
+  $string = $storage->findString(['source' => 'Ово је из Тwига']);
+
+  if (is_null($string)) {
+    $string = new SourceString();
+    $string->setString('Ово је из Тwига');
+    $string->setStorage($storage);
+    $string->save();
+  }
+
+  $storage->createTranslation([
+    'lid' => $string->lid,
+    'language' => 'sr',
+    'translation' => 'Ово је из Тwига',
+  ])->save();
+}

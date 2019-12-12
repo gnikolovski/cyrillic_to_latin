@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Cyrillic to Latin Test.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cyrillic_to_latin_test_theme() {
+  return [
+    'node__page' => [
+      'template' => 'node--page',
+      'base hook' => 'node',
+    ],
+  ];
+}
