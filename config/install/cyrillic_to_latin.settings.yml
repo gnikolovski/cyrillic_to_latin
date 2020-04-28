@@ -1,3 +1,4 @@
 enabled: 1
+transliterate_on_po_import: false
 languages:
   sr: sr

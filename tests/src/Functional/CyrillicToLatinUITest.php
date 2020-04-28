@@ -23,6 +23,7 @@ class CyrillicToLatinUITest extends BrowserTestBase {
   public static $modules = [
     'config',
     'language',
+    'locale',
     'cyrillic_to_latin',
   ];
 
@@ -51,6 +52,8 @@ class CyrillicToLatinUITest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->titleEquals('Cyrillic to Latin settings | Drupal');
     $this->assertSession()->selectExists('enabled');
+    $this->assertSession()->elementExists('css', '#edit-transliterate-on-po-import');
+    $this->assertSession()->checkboxNotChecked('transliterate_on_po_import');
     $this->assertSession()->elementExists('css', '#edit-languages-en');
     $this->assertSession()->checkboxNotChecked('languages[en]');
     $this->assertSession()->elementExists('css', '#edit-languages-sr');
@@ -63,14 +66,16 @@ class CyrillicToLatinUITest extends BrowserTestBase {
    */
   public function testFormSubmit() {
     $form_values = [
-      'enabled' => '0',
+      'enabled' => '1',
+      'transliterate_on_po_import' => '0',
       'languages[en]' => TRUE,
       'languages[sr]' => FALSE,
     ];
 
     $this->drupalPostForm('admin/config/regional/cyrillic-to-latin', $form_values, 'Save configuration');
     $this->assertSession()->pageTextContains($this->t('The configuration options have been saved. You must clear the cache for the change to take effect.'));
-    $this->assertSession()->fieldValueEquals('enabled', '0');
+    $this->assertSession()->fieldValueEquals('enabled', '1');
+    $this->assertSession()->fieldValueEquals('transliterate_on_po_import', '');
     $this->assertSession()->checkboxChecked('languages[en]');
     $this->assertSession()->checkboxNotChecked('languages[sr]');
   }

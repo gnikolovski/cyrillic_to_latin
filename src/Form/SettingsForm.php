@@ -71,12 +71,28 @@ class SettingsForm extends ConfigFormBase {
       ],
     ];
 
+    $form['transliterate_on_po_import'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Transliterate strings on .po file import'),
+      '#default_value' => !empty($cyrillic_to_latin_config->get('transliterate_on_po_import')) ? $cyrillic_to_latin_config->get('transliterate_on_po_import') : FALSE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enabled"]' => ['value' => '1'],
+        ],
+      ],
+    ];
+
     $form['languages'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Languages'),
       '#default_value' => !empty($cyrillic_to_latin_config->get('languages')) ? $cyrillic_to_latin_config->get('languages') : [],
       '#description' => $this->t('Apply transliteration only for selected languages.'),
       '#options' => $this->getLanguages(),
+      '#states' => [
+        'visible' => [
+          ':input[name="enabled"]' => ['value' => '1'],
+        ],
+      ],
     ];
 
     return parent::buildForm($form, $form_state);
@@ -89,6 +105,7 @@ class SettingsForm extends ConfigFormBase {
     $values = $form_state->getValues();
     $this->config('cyrillic_to_latin.settings')
       ->set('enabled', $values['enabled'])
+      ->set('transliterate_on_po_import', $values['transliterate_on_po_import'])
       ->set('languages', $values['languages'])
       ->save();
 

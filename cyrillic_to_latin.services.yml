@@ -1,0 +1,6 @@
+services:
+  cyrillic_to_latin.locale_subscriber:
+    class: Drupal\cyrillic_to_latin\EventSubscriber\LocaleSubscriber
+    arguments: ['@config.factory', '@locale.storage']
+    tags:
+      - { name: event_subscriber }

@@ -5,6 +5,9 @@ cyrillic_to_latin.settings:
     enabled:
       type: integer
       label: 'Enabled'
+    transliterate_on_po_import:
+      type: boolean
+      label: 'Transliterate strings on .po file import'
     languages:
       type: sequence
       label: 'Languages'
