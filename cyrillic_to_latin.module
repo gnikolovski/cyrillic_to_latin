@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\cyrillic_to_latin\CyrillicToLatinManager;
 
 /**
@@ -25,15 +26,8 @@ function cyrillic_to_latin_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_preprocess_HOOK().
  */
 function cyrillic_to_latin_preprocess_field(&$variables) {
-  /** @var \Drupal\Core\Config\ConfigFactory $config */
-  $config = \Drupal::configFactory()->get('cyrillic_to_latin.settings');
-  if (!$config->get('enabled')) {
-    return;
-  }
-
-  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $enabled_languages = !empty($config->get('languages')) ? array_filter(array_values($config->get('languages'))) : [];
-  if (!in_array($current_language, $enabled_languages)) {
+  $is_module_enabled = cyrillic_to_latin_is_module_enabled();
+  if ($is_module_enabled === FALSE) {
     return;
   }
 
@@ -74,4 +68,41 @@ function cyrillic_to_latin_preprocess_field(&$variables) {
       $variables['items'][$i]['content']['country']['#value'] = CyrillicToLatinManager::convertCyrillicToLatin($country_name);
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cyrillic_to_latin_preprocess_views_view_field(&$variables) {
+  $is_module_enabled = cyrillic_to_latin_is_module_enabled();
+  if ($is_module_enabled === FALSE) {
+    return;
+  }
+
+  if ($variables['field']->field == 'address') {
+    $translated_address_output = CyrillicToLatinManager::convertCyrillicToLatin($variables['output']);
+    $variables['output'] = new TranslatableMarkup($translated_address_output);
+  }
+}
+
+/**
+ * Checks if the module is enabled.
+ *
+ * @return bool
+ *   TRUE if the module is enabled, FALSE otherwise.
+ */
+function cyrillic_to_latin_is_module_enabled() {
+  /** @var \Drupal\Core\Config\ConfigFactory $config */
+  $config = \Drupal::configFactory()->get('cyrillic_to_latin.settings');
+  if (!$config->get('enabled')) {
+    return FALSE;
+  }
+
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $enabled_languages = !empty($config->get('languages')) ? array_filter(array_values($config->get('languages'))) : [];
+  if (!in_array($current_language, $enabled_languages)) {
+    return FALSE;
+  }
+
+  return TRUE;
 }
