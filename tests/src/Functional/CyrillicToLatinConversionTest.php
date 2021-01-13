@@ -82,9 +82,9 @@ class CyrillicToLatinConversionTest extends BrowserTestBase {
 
     $this->drupalGet('sr/node/1');
     $this->assertResponse(200);
-    $this->assertText('Ovo jе samo tеst');
-    $this->assertText('Ovo jе body');
-    $this->assertText('Ovo jе iz Twiga');
+    $this->assertText('Ovo je samo test');
+    $this->assertText('Ovo je body');
+    $this->assertText('Ovo je iz Twiga');
   }
 
 }
