@@ -21,7 +21,7 @@ class CyrillicToLatinConversionTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'locale',
     'cyrillic_to_latin',
     'cyrillic_to_latin_test',
@@ -35,7 +35,7 @@ class CyrillicToLatinConversionTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $language = ConfigurableLanguage::createFromLangcode('sr');
@@ -75,16 +75,16 @@ class CyrillicToLatinConversionTest extends BrowserTestBase {
     $node_sr->save();
 
     $this->drupalGet('node/1');
-    $this->assertResponse(200);
-    $this->assertText('Ово је само тест');
-    $this->assertText('Ово је бодy');
-    $this->assertText('Ово је из Тwига');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextContains('Ово је само тест');
+    $this->assertSession()->pageTextContains('Ово је бодy');
+    $this->assertSession()->pageTextContains('Ово је из Тwига');
 
     $this->drupalGet('sr/node/1');
-    $this->assertResponse(200);
-    $this->assertText('Ovo je samo test');
-    $this->assertText('Ovo je body');
-    $this->assertText('Ovo je iz Twiga');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextContains('Ovo je samo test');
+    $this->assertSession()->pageTextContains('Ovo je body');
+    $this->assertSession()->pageTextContains('Ovo je iz Twiga');
   }
 
 }

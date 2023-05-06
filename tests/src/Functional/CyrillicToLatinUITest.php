@@ -20,7 +20,7 @@ class CyrillicToLatinUITest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'config',
     'language',
     'locale',
@@ -35,7 +35,7 @@ class CyrillicToLatinUITest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->drupalLogin($this->drupalCreateUser(['administer site configuration']));
@@ -72,7 +72,8 @@ class CyrillicToLatinUITest extends BrowserTestBase {
       'languages[sr]' => FALSE,
     ];
 
-    $this->drupalPostForm('admin/config/regional/cyrillic-to-latin', $form_values, 'Save configuration');
+    $this->drupalGet('admin/config/regional/cyrillic-to-latin');
+    $this->submitForm($form_values, 'Save configuration');
     $this->assertSession()->pageTextContains($this->t('The configuration options have been saved. You must clear the cache for the change to take effect.'));
     $this->assertSession()->fieldValueEquals('enabled', '1');
     $this->assertSession()->fieldValueEquals('transliterate_on_po_import', '');
