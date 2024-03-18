@@ -1,7 +1,7 @@
 name: 'Cyrillic to Latin'
 description: 'Converts cyrillic to latin letters on the fly for the Serbian language.'
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 package: 'Multilingual'
 configure: cyrillic_to_latin.admin_settings
 dependencies:
