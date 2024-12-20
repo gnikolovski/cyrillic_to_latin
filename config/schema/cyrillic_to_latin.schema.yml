@@ -12,5 +12,5 @@ cyrillic_to_latin.settings:
       type: sequence
       label: 'Languages'
       sequence:
-        - type: string
-          label: 'Language'
+        type: string
+        label: 'Language'
